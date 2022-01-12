@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src="p5.play.js"></script>
+
+<!-- El SDK de Firebase JS principal siempre es obligatorio y se debe figurar primero -->
+<!-- TODO: Agrega SDK para los productos de Firebase que quieras usar
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+   //import { initializeApp } from "firebase/app"; 
+<script>
+  // Configuración de Firebase de tu aplicación web
+  var firebaseConfig = {
+  apiKey: "AIzaSyBuN4O82RttWUICJOeZ9HPd4Lpc7SoL2No",
+  authDomain: "feedthedog-8a5db.firebaseapp.com",
+  databaseURL: "https://feedthedog-8a5db-default-rtdb.firebaseio.com",
+  projectId: "feedthedog-8a5db",
+  storageBucket: "feedthedog-8a5db.appspot.com",
+  messagingSenderId: "660275481509",
+  appId: "1:660275481509:web:2d303ed0886a63b163f64c"
+};
+  // Inicializar Firebase
+  firebase.initializeApp(firebaseConfig);
+  </script>
+
+  
+    <script src="Food.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+      <script src="sketch.js"></script>
+</body></html>
