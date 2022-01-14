@@ -16,7 +16,7 @@ function setup() {
   database=firebase.database();
   createCanvas(1000,400);
 
-  
+  foodObj = new Food();
 
   foodStock=database.ref('Food');
   foodStock.on("value",readStock);
@@ -28,7 +28,7 @@ function setup() {
   //crea aquí el boton Alimentar al perro
   FeedDog=createButton("Alimeta al perro")
   FeedDog.position(600,200)
-  FeedDog.mousePressed(feed)
+  FeedDog.mousePressed(feedDog)
 
   addFood=createButton("Agregar Alimento");
   addFood.position(800,95);
@@ -41,20 +41,21 @@ function draw() {
   foodObj.display();
 
   //escribe el código para leer el valor de tiempo de alimentación de la base de datos
-  readStock(data);
+  fedTime=database.ref('FeedTime');
+fedTime.on("value",function(data){
+lastFed=data.val();
+});
   
  
   //escribe el código para mostrar el texto lastFed time aquí
-if(lastFed>=12){
-
-  text("Ultima hora que se alimento al perro :12AM")
-
-}else if(lastFed==0){
-  text("Ultima hora que se alimento al perro : 12PM",350,30);
-}else{
-
-}
- //
+  if(lastFed>=12){
+    text("Última hora en que se alimentó : "+ lastFed%12 + " PM", 350,30);
+    }else if(lastFed==0){
+    text("Última hora en que se alimentó : 12 AM",350,30);
+    }else{
+    text("Última hora en que se alimentó : "+ lastFed + " AM", 350,30);
+    }
+ 
 
  
 drawSprites();
@@ -74,9 +75,12 @@ function feedDog(){
  } 
  database.ref('/').update({ Food:foodObj.getFoodStock(),
  FeedTime:hour() })
- }
+ } 
+ 
+  
   //escribe el código aquí para actualizar las existencia de alimento, y la última vez que se alimentó al perro
-  var food_stock_val = foofObj.getFoodStock();
+  //te quedaste aquí,intentabas copiar esto pero algo te salio mal.
+  var food_stock_val = foodObj.getFoodStock();
   if(food_stock_val <= 0){
   foodObj.updateFoodStock(food_stock_val *0);
   }else{
